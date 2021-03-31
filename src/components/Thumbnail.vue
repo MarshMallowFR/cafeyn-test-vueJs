@@ -1,0 +1,134 @@
+<template>
+  <a
+    :href="
+      'https://www.cafeyn.co/fr/publication/' +
+      newspaper.publication?.title +
+      '/' +
+      newspaper.publicationId
+    "
+    class="thumbnail-link"
+  >
+    <img :src="newspaper.coverUrl" alt="cover newspaper" />
+    <div class="thumbnail-content">
+      <h3 class="thumbnail-title">{{ newspaper?.publication?.title }}</h3>
+      <p class="thumbnail-date">{{ formatDate(newspaper.releaseDate) }}</p>
+    </div>
+  </a>
+</template>
+
+<script>
+import { formatDate } from "@/helpers/dateHelper";
+
+export default {
+  name: "Thumbnail",
+  props: {
+    newspaper: Object,
+  },
+  data() {
+    return {
+      formatDate,
+    };
+  },
+};
+</script>
+
+<style>
+.thumbnail {
+  flex: 0 0 auto;
+  margin-left: 32px;
+  margin-top: 64px;
+  width: calc(16.66667% - 32px);
+}
+
+.thumbnail-content {
+  max-width: 75%;
+  padding-left: 2px;
+}
+
+.thumbnail-date {
+  color: #536067;
+  font-size: 0.75rem;
+  line-height: 1.3125rem;
+  letter-spacing: -0.0125rem;
+  margin: 0;
+  white-space: normal;
+}
+
+.thumbnail-link {
+  cursor: pointer;
+  line-height: normal;
+  position: relative;
+  text-align: left;
+}
+.thumbnail-link > img {
+  background-color: transparent;
+  height: 239px;
+  min-height: inherit;
+}
+
+.thumbnail-link > img {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background-color: transparent;
+  border-radius: 2px;
+  height: 239px;
+  margin-bottom: 12px;
+  min-height: inherit;
+  opacity: 1;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+  z-index: 0;
+}
+
+.thumbnail-link > img:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.thumbnail-title {
+  color: #1e323d;
+  font-size: 0.875rem;
+  letter-spacing: -0.025rem;
+  line-height: 1.375rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1279px) {
+  .thumbnail {
+    flex: 0 0 auto;
+    margin-left: 16px;
+    margin-top: 64px;
+  }
+
+  .thumbnail-link > img {
+    height: 183px;
+    width: 136px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .thumbnail {
+    width: calc(16.66667% - 16px);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .thumbnail {
+    width: calc(20.66667% - 16px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .thumbnail {
+    margin: 18% 13% -9% 4%;
+    width: 30%;
+  }
+  .thumbnail-link > img {
+    height: 235px;
+    width: 177px;
+  }
+}
+</style>

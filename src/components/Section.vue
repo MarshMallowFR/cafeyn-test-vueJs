@@ -1,0 +1,172 @@
+<template>
+  <section>
+    <div class="section-main">
+      <h1>{{ title }}</h1>
+      <h2>{{ description }}</h2>
+    </div>
+    <nav class="section-nav">
+      <ul>
+        <div class="section-nav-active" :style="{ customStyle }"></div>
+        <li v-for="item in navItems" :key="item">
+          <span
+            class="section-nav-item"
+            @Click="handleClick($event, item)"
+            :style="{ fontWeight: subCategorie === item ? 'bold' : '' }"
+          >
+            {{ item }}
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</template>
+
+<script>
+export default {
+  name: "Section",
+  props: {
+    title: String,
+    description: String,
+    customClass: String,
+    setSubCategorie: Function,
+    subCategorie: String,
+    navItems: Array,
+  },
+  data() {
+    return {
+      customStyle: {},
+    };
+  },
+  methods: {
+    handleClick(e, item) {
+      this.customStyle = {
+        width: e.target.offsetWidth,
+        left: e.target.offsetLeft,
+      };
+      this.$emit("setSubCategorie", item);
+    },
+  },
+  mounted() {
+    const navElement = document.getElementsByClassName("section-nav-item")[0];
+    this.customStyle = {
+      width: navElement.offsetWidth,
+      left: navElement.offsetLeft,
+    };
+  },
+};
+</script>
+
+<style>
+section {
+  background-color: var(--cafeyn-bcg-color);
+  border-bottom: 1px solid var(--cafeyn-border-color);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 180px;
+  padding: 22px 0px 0px 0px;
+  margin-left: 30px;
+  max-width: 1212px;
+}
+
+.section-main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: auto;
+}
+
+.section-main > h1,
+.section-main > h2 {
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+}
+
+.section-main > h1 {
+  color: rgb(103, 131, 155);
+  font-family: Soleil-light, Helvetica, sans-serif;
+  font-size: 28px;
+  line-height: 2.375rem;
+  letter-spacing: -0.09375rem;
+}
+.section-main > h2 {
+  color: #1e323d;
+  font-family: Soleil, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.625rem;
+  letter-spacing: -0.0375rem;
+}
+
+.section-nav {
+  margin: 0;
+  padding-top: 37px;
+}
+
+.section-nav > ul {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.section-nav > ul > li:last-child > span {
+  margin-right: 0;
+}
+
+.section-nav-active {
+  bottom: -20px;
+  background-color: rgb(103, 131, 155);
+  height: 4px;
+  transition: all 0.3s ease-out;
+  position: absolute;
+}
+
+.section-nav-item {
+  color: #8b8b8b;
+  font-family: Soleil-bold, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03125rem;
+  line-height: 1.125rem;
+  margin-right: 40px;
+  padding-bottom: 19px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-nav-item:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  section {
+    flex-direction: column;
+    margin-top: 145px;
+    border-bottom: none;
+    max-width: 306px;
+    margin-right: 35px;
+    padding-top: 72px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .section-nav {
+    margin-right: 23px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section-main {
+    margin-bottom: 0;
+  }
+  .section-nav {
+    max-width: 600px;
+    padding-top: 25px;
+  }
+  .section-nav > ul {
+    justify-content: space-between;
+  }
+  .section-nav-item {
+    margin-right: 0;
+  }
+}
+</style>

@@ -1,0 +1,297 @@
+<template>
+  <header>
+    <div class="header-main-active">
+      <div class="header-main-content">
+        <a
+          href="https://www.cafeyn.co/fr/search"
+          class="header-search-icon-mobile"
+        >
+        </a>
+        <a class="header-logo" href="https://www.cafeyn.co/fr/newsstand">
+          <img src="../assets/img/cafeyn.svg" alt="logo cafeyn" />
+        </a>
+        <a class="header-search" href="https://www.cafeyn.co/fr/search">
+          <p>Rechercher un titre de presse ou un article</p>
+          <div class="header-search-icon">
+            <v-icon name="beer" scale="2" />
+          </div>
+        </a>
+        <div class="header-right">
+          <div class="header-gift">
+            <a
+              href="https://www.cafeyn.co/fr/gift/offers"
+              class="header-gift-link"
+            >
+              <img
+                class="gift-icon"
+                src="../assets/img/giftHeader.svg"
+                alt="gift-icon"
+              />
+            </a>
+          </div>
+          <div class="header-right-content">
+            <Button
+              name="se connecter"
+              slug="https://www.cafeyn.co/fr/authentication/signin"
+              customClass="button-login"
+            />
+            <Button
+              name="s'inscrire"
+              slug="https://www.cafeyn.co/fr/authentication/registration"
+              customClass="button-register"
+            />
+          </div>
+          <div class="header-right-login-mobile">
+            <div class="header-right-profil">
+              <img src="../assets/img/lk-login.svg" alt="logo login" />
+              <!-- <span class="header-right-icon">
+                <BiChevronDown />
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+import Button from "./Button.vue";
+
+export default {
+  name: "Header",
+  components: {
+    Button,
+  },
+};
+</script>
+
+<style>
+.button-login {
+  background-color: var(--cafeyn-bcg-color);
+  border: 1px solid var(--cafeyn-border-color);
+}
+
+.button-register {
+  background-color: var(--cafeyn-loginRegister-color);
+  border: 1px solid var(--cafeyn-loginRegister-color);
+  margin-left: 10px;
+}
+
+header {
+  border-bottom: 1px solid var(--cafeyn-border-color);
+  /* display: inherit;
+  left: 0; */
+  max-width: 1274px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+.header-gift {
+  border-right: 1px solid var(--cafeyn-border-color);
+  margin-right: 16px;
+  padding-right: 16px;
+}
+
+.header-gift-link {
+  background-color: var(--cafeyn-bcg-color);
+  border: 1px solid var(--cafeyn-border-color);
+  border-radius: 19px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  height: 38px;
+  letter-spacing: 0;
+  line-height: 2.25rem;
+  padding: 7px 12px;
+  position: relative;
+  transition: all 0.1s ease-out;
+  top: 0;
+  width: 38px;
+}
+
+.header-gift-link:hover {
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.08);
+  top: -2px;
+}
+
+.header-logo {
+  margin: 0 35px;
+  width: 11%;
+}
+.header-logo > img {
+  width: 113px;
+}
+
+.header-main-active {
+  background-color: var(--cafeyn-bcg-color);
+  border-bottom: 1px solid var(--cafeyn-border-color);
+  min-height: 59px;
+  padding: 12px 0;
+}
+.header-main {
+  display: none;
+}
+
+.header-main-content {
+  align-items: center;
+  display: flex;
+  min-height: 38px;
+  position: relative;
+}
+
+.header-right {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  margin-left: 37px;
+  text-align: right;
+  width: calc(50% - 32px);
+}
+
+.header-right-content {
+  background-color: var(--cafeyn-bcg-color);
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  top: 0;
+  transform: none;
+  width: auto;
+  z-index: auto;
+}
+
+.header-right-content > a {
+  border-radius: 100px;
+  color: #1e323d;
+  cursor: pointer;
+  font-family: "Soleil-bold";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  line-height: 0.625rem;
+  letter-spacing: 0.03125rem;
+  padding: 11px 27px;
+  text-transform: uppercase;
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+
+.header-search {
+  align-items: center;
+  border: 1px solid var(--cafeyn-border-color);
+  border-radius: 5px;
+  color: var(--cafeyn-grey-color);
+  display: flex;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+  margin-left: 7px;
+  position: relative;
+  text-decoration: none;
+  width: calc(33.33333% - 40px);
+}
+
+.header-search > p {
+  color: var(--cafeyn-grey-color);
+  display: block;
+  font-size: 14px;
+  line-height: 1.66rem;
+  padding-left: 21px;
+  padding-right: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-search-icon {
+  height: 15px;
+  position: absolute;
+  right: 22px;
+  width: 10px;
+  font-weight: bold;
+}
+
+.header-search-icon-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .header-right-login-mobile .header-right-profil {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .header-right-login-mobile {
+    display: flex;
+    position: relative;
+    width: 67px;
+  }
+  .header-right-content {
+    display: none;
+  }
+  .header-right-profil {
+    border: 1px solid var(--cafeyn-border-color);
+    border-radius: 22px;
+    display: inherit;
+    font-size: 1rem;
+    padding: 8px 7px 7px 9px;
+  }
+  .header-right-profil:hover {
+    cursor: pointer;
+  }
+  .header-right-profil > img {
+    color: #86949b;
+    height: 22px;
+    font-size: 1.45rem;
+    margin-right: 8px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .header-right-content {
+    display: none;
+  }
+
+  .header-right-login-mobile > p {
+    height: 10px;
+    width: 10px;
+  }
+
+  .header-search {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header-main-active {
+    min-height: 0;
+    padding: 21px 0px 20px 0;
+  }
+
+  .header-main-content {
+    justify-content: space-around;
+  }
+
+  .header-search {
+    display: none;
+  }
+
+  .header-search-icon-mobile {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-search {
+    position: relative;
+    top: 0;
+    left: 0;
+    order: 0;
+    margin-left: 8%;
+    width: 50%;
+  }
+}
+</style>

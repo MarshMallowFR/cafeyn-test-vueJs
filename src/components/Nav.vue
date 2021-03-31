@@ -1,0 +1,185 @@
+<template>
+  <nav :id="'showHeader' ? 'main-nav' : 'main-nav-active'">
+    <ul class="main-nav-content">
+      <a
+        class="main-nav-item"
+        v-for="{ link, category } in navCategoriesHeader"
+        :href="link"
+        :key="category"
+      >
+        <span class="main-nav-item-bg"></span>
+        <span class="main-nav-item-text">{{ category }}</span>
+      </a>
+    </ul>
+  </nav>
+</template>
+
+<script>
+import { navCategoriesHeader } from "../assets/cafeyn.fixtures";
+
+export default {
+  name: "Nav",
+  props: {
+    showHeader: String,
+  },
+  data() {
+    return { navCategoriesHeader };
+  },
+};
+</script>
+
+<style scoped>
+#main-nav {
+  background-color: var(--cafeyn-bcg-color);
+  border-bottom: 1px solid var(--cafeyn-border-color);
+  height: 75px;
+  max-width: 1274px;
+  position: fixed;
+  top: 84px;
+  width: 100%;
+  z-index: 2;
+  padding-top: 26px;
+}
+
+#main-nav-active {
+  background-color: var(--cafeyn-bcg-color);
+  border-bottom: 1px solid var(--cafeyn-border-color);
+  height: 75px;
+  max-width: 1274px;
+  padding-top: 26px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2;
+}
+
+.main-nav-content {
+  background-color: var(--cafeyn-bcg-color);
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0 0;
+  padding: 4px 45px;
+  overflow-x: auto;
+  width: 75%;
+}
+
+.main-nav-content > a:nth-child(1):hover > .main-nav-item-text {
+  color: rgb(29, 115, 164);
+}
+.main-nav-content > a:nth-child(1):hover > .main-nav-item-bg {
+  background-color: rgb(29, 115, 164);
+}
+.main-nav-content > a:nth-child(2):hover > .main-nav-item-text {
+  color: rgb(103, 131, 155);
+}
+.main-nav-content > a:nth-child(2):hover > .main-nav-item-bg {
+  background-color: rgb(103, 131, 155);
+}
+.main-nav-content > a:nth-child(3):hover > .main-nav-item-text {
+  color: rgb(89, 170, 199);
+}
+.main-nav-content > a:nth-child(3):hover > .main-nav-item-bg {
+  background-color: rgb(89, 170, 199);
+}
+.main-nav-content > a:nth-child(4):hover > .main-nav-item-text {
+  color: rgb(239, 154, 154);
+}
+.main-nav-content > a:nth-child(4):hover > .main-nav-item-bg {
+  background-color: rgb(239, 154, 154);
+}
+.main-nav-content > a:nth-child(5):hover > .main-nav-item-text {
+  color: rgb(136, 201, 195);
+}
+.main-nav-content > a:nth-child(5):hover > .main-nav-item-bg {
+  background-color: rgb(136, 201, 195);
+}
+.main-nav-content > a:nth-child(6):hover > .main-nav-item-text {
+  color: rgb(106, 89, 106);
+}
+.main-nav-content > a:nth-child(6):hover > .main-nav-item-bg {
+  background-color: rgb(106, 89, 106);
+}
+.main-nav-content > a:nth-child(7):hover > .main-nav-item-text {
+  color: rgb(183, 105, 76);
+}
+.main-nav-content > a:nth-child(7):hover > .main-nav-item-bg {
+  background-color: rgb(183, 105, 76);
+}
+.main-nav-content > a:nth-child(8):hover > .main-nav-item-text {
+  color: rgb(139, 26, 46);
+}
+.main-nav-content > a:nth-child(8):hover > .main-nav-item-bg {
+  background-color: rgb(139, 26, 46);
+}
+
+.main-nav-item {
+  border-radius: 4px;
+  color: var(--cafeyn-grey-color);
+  cursor: pointer;
+  /* display: inline-block; */
+  flex: 1 0 auto;
+  font-family: Soleil-bold, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.03125rem;
+  line-height: 1.125rem;
+  padding: 8px 23px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main-nav-item-bg {
+  border-radius: 4px;
+  display: block;
+  height: 38px;
+  left: 0;
+  opacity: 0.08;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1025px) {
+  .main-nav-content {
+    padding: 4px 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main-nav {
+    padding-top: 10px;
+    top: 85px;
+  }
+  #main-nav-active {
+    padding-top: 0;
+  }
+  .main-nav-item {
+    padding: 24px 13px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-search {
+    left: 0;
+    margin-left: 8%;
+    order: 0;
+    position: relative;
+    top: 0;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1550px) {
+  .main-nav-content {
+    width: 76%;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .header-right-login-mobile {
+    display: inherit;
+  }
+}
+</style>
